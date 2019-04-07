@@ -135,8 +135,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Headers\Object.cpp" />
-    <ClCompile Include="Source\lodepng.cpp" />
+    <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\Mesh.cpp" />
+    <ClCompile Include="Source\Object.cpp" />
+    <ClCompile Include="Source\lodepng\lodepng.cpp" />
     <ClCompile Include="Source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +147,10 @@
     <ClInclude Include="Source\cyCodeBase\cyMatrix.h" />
     <ClInclude Include="Source\cyCodeBase\cyPoint.h" />
     <ClInclude Include="Source\cyCodeBase\cyTriMesh.h" />
-    <ClInclude Include="Source\Headers\lodepng.h" />
+    <ClInclude Include="Source\Headers\Camera.h" />
+    <ClInclude Include="Source\Headers\Mesh.h" />
+    <ClInclude Include="Source\lodepng\lodepng.h" />
+    <ClInclude Include="Source\Headers\System.h" />
     <ClInclude Include="Source\Headers\Object.h" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +158,10 @@
     <Text Include="Source\Shaders\Primitive Shaders\BasicVS.txt" />
     <Text Include="Source\Shaders\Skybox Shaders\SkyboxFS.txt" />
     <Text Include="Source\Shaders\Skybox Shaders\SkyboxVS.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Shaders\Ground\ground.frag" />
+    <None Include="Source\Shaders\Ground\ground.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

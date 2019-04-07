@@ -30,10 +30,19 @@
     <ClInclude Include="Source\cyCodeBase\cyTriMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Headers\lodepng.h">
+    <ClInclude Include="Source\Headers\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Headers\Object.h">
+    <ClInclude Include="Source\Headers\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\System.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\lodepng\lodepng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,10 +50,16 @@
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lodepng.cpp">
+    <ClCompile Include="Source\lodepng\lodepng.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Headers\Object.cpp">
+    <ClCompile Include="Source\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,5 +68,9 @@
     <Text Include="Source\Shaders\Skybox Shaders\SkyboxFS.txt" />
     <Text Include="Source\Shaders\Primitive Shaders\BasicVS.txt" />
     <Text Include="Source\Shaders\Primitive Shaders\BasicFS.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Shaders\Ground\ground.vert" />
+    <None Include="Source\Shaders\Ground\ground.frag" />
   </ItemGroup>
 </Project>

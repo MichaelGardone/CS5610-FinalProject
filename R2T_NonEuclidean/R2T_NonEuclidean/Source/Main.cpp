@@ -19,11 +19,6 @@ static void cursor_position_callback(GLFWwindow* window, double xpos, double ypo
 // Projection/Screen
 GLuint width = 1200, height = 800;
 
-void loadShaders()
-{
-	
-}
-
 int main(int argc, char **argv)
 {
 	//Initialize GLFW  
@@ -71,8 +66,6 @@ int main(int argc, char **argv)
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
 	// == END SETUP ==
-
-	loadShaders();
 
 
 	//Main Loop

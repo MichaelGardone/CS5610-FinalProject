@@ -1,22 +1,17 @@
 #include "Object.h"
 
-#ifdef NDEBUG
-bool debug = false;
-#else
-bool debug = true;
-#endif
-
 /*
 public:
 	Object();
 
-	virtual ~Object();
 	virtual void Reset();
 	virtual void Draw();
 	virtual void Update();
 
 	// .vert = verex, .frag = fragment, .tcs = tessellation control, .tes = tessellation evaluation, .geom = geometry, .cmpte = compute
 	virtual void LoadShaders(char **shaders);
+	// Register uniforms given by a list
+	virtual void RegisterUniforms(char **);
 
 	// Return a pointer to the Matrix4f to speed up return
 	virtual cyMatrix4f* model_matrix() const;
@@ -40,7 +35,7 @@ Object::Object() :
 	scale(1.f),
 	rotation(0.f)
 {
-	// Do nothing?
+	shader.CreateProgram();
 }
 
 // Currently only loads one file rather than compiling multiple
@@ -66,10 +61,10 @@ void Object::LoadShaders(char** shaders, int length)
 	}
 
 	if (vert.IsNull() == false)
-		program.AttachShader(vert);
+		shader.AttachShader(vert);
 
 	if (frag.IsNull() == false)
-		program.AttachShader(frag);
+		shader.AttachShader(frag);
 
 	// Do not put this in debug only -- if something fails in production, we need to know about it
 	if (vert.IsNull() == false && geom.IsNull() == false)
@@ -80,10 +75,37 @@ void Object::LoadShaders(char** shaders, int length)
 	}
 
 	// Link the shaders together
-	program.Link();
+	shader.Link();
 
 	if (debug)
 		std::cout << "Shaders loaded for " << name << std::endl;
 }
 
+void Object::Reset()
+{
+	this->position.Zero();
+	this->rotation.Zero();
+	this->scale.Set(1.f);
+}
 
+void Object::Draw(Camera& camera)
+{
+	// Bind out shader to the object
+	shader.Bind();
+
+	cyMatrix4f MVP = camera.get_view() * this->model_matrix;
+	shader.SetUniform(0, MVP);
+	shader.SetUniform(1, this->model_matrix);
+	shader.SetUniform(2, color);
+	
+	// Render it
+	mesh->Draw();
+}
+
+void Object::RegisterUniforms(char **uniforms, int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		shader.RegisterUniform(i, uniforms[i]);
+	}
+}
