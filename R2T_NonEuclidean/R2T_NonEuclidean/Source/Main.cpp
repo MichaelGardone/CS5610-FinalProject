@@ -7,14 +7,11 @@
 #include "cyMatrix.h"
 #include "cyGL.h"
 
+#include "Input.h"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
-// Callbacks  
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-static void mouse_callback(GLFWwindow* window, int button, int action, int mods);
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
 // Projection/Screen
 GLuint width = 1200, height = 800;
@@ -42,14 +39,17 @@ int main(int argc, char **argv)
 
 	glfwMakeContextCurrent(window);
 
+	// Take the input callbacks
+	Input input;
+
 	// Sets the key callback  
-	glfwSetKeyCallback(window, key_callback);
+	glfwSetKeyCallback(window, input.key_callback);
 
 	// Set the mouse button callback
-	glfwSetMouseButtonCallback(window, mouse_callback);
+	glfwSetMouseButtonCallback(window, input.mouse_callback);
 
 	// Set the mouse move callback
-	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetCursorPosCallback(window, input.cursor_position_callback);
 
 	//Initialize GLEW
 	GLenum err = glewInit();
@@ -92,23 +92,4 @@ int main(int argc, char **argv)
 	glfwTerminate();
 
 	return 0;
-}
-
-// CALL BACKS
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
-}
-
-static void mouse_callback(GLFWwindow* window, int button, int action, int mods)
-{
-	
-}
-
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
-{
-
-	
-	
 }

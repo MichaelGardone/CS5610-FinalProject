@@ -136,10 +136,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\lodepng\lodepng.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\cyCodeBase\cyCore.h" />
@@ -148,7 +150,9 @@
     <ClInclude Include="Source\cyCodeBase\cyPoint.h" />
     <ClInclude Include="Source\cyCodeBase\cyTriMesh.h" />
     <ClInclude Include="Source\Headers\Camera.h" />
+    <ClInclude Include="Source\Headers\Input.h" />
     <ClInclude Include="Source\Headers\Mesh.h" />
+    <ClInclude Include="Source\Headers\Player.h" />
     <ClInclude Include="Source\lodepng\lodepng.h" />
     <ClInclude Include="Source\Headers\System.h" />
     <ClInclude Include="Source\Headers\Object.h" />
