@@ -8,8 +8,10 @@ public:
     SceneManager(int);
 
     void add_scene(Scene);
-    bool delete_scene(Scene);
     bool delete_scene(int);
+
+    void load(int);
+    void unload(int);
 
 private:
     std::vector<Scene> scenes;
@@ -35,4 +37,36 @@ SceneManager::~SceneManager()
 
     // Empty vector
     scenes.clear();
+}
+
+void add_scene(Scene scene)
+{
+    this->scenes.push_back(scene);
+}
+
+bool delete_scene(int i)
+{
+    if(i > this->scenes.size())
+        return false;
+    
+    delete scenes[i];
+    this->scenes.erase(this->scenes.begin()+i);
+
+    return true;
+}
+
+void load(int i)
+{
+    if (i > this->scenes.size())
+        return;
+    
+    this->scenes[i].load();
+}
+
+void unload(int i)
+{
+    if (i > this->scenes.size())
+        return;
+    
+    this->scenes[i].unload();
 }

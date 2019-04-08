@@ -13,9 +13,11 @@ public:
     ~SceneManager();
 
     void add_scene(Scene);
-    bool delete_scene(Scene);
     bool delete_scene(int);
 
+    void load(int);
+    void unload(int);
+    
 private:
     std::vector<Scene*> scenes;
 

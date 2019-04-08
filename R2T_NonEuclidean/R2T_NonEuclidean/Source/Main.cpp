@@ -8,6 +8,7 @@
 #include "cyGL.h"
 
 #include "Input.h"
+#include "SceneManager.h"
 
 #include <iostream>
 #include <fstream>
@@ -67,6 +68,8 @@ int main(int argc, char **argv)
 
 	// == END SETUP ==
 
+	SceneManager sm;
+	
 
 	//Main Loop
 	while (!glfwWindowShouldClose(window))
