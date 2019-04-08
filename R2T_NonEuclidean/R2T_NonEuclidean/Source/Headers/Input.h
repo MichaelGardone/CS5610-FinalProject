@@ -1,6 +1,9 @@
 #ifndef _INPUT_H_
 #define _INPUT_H_
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 class Input {
 public:
 	Input();

@@ -4,6 +4,7 @@
 #define DEF_SCENE_NUM 6
 
 #include <vector>
+#include "Scene.h"
 
 class SceneManager
 {
@@ -12,7 +13,7 @@ public:
     SceneManager(int);
     ~SceneManager();
 
-    void add_scene(Scene);
+    void add_scene(Scene&);
     bool delete_scene(int);
 
     void load(int);

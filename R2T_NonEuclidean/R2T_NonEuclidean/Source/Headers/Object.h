@@ -1,6 +1,7 @@
 #ifndef _OBJECT_H_
 #define _OBJECT_H_
 
+#include <Windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -22,7 +23,7 @@ public:
 	// Logic functions for the object
 	virtual void Reset();
 	virtual void Draw(Camera& camera);
-	virtual void Update();
+	//virtual void Update();
 
 	// .vert = verex, .frag = fragment, .tcs = tessellation control, .tes = tessellation evaluation, .geom = geometry, .cmpte = compute
 	virtual void LoadShaders(char**, int);
@@ -30,7 +31,7 @@ public:
 	virtual void RegisterUniforms(char **, int);
 
 	// Return a pointer to the Matrix4f to speed up return
-	virtual cyMatrix4f* model_matrix() const;
+	//virtual cyMatrix4f* model_matrix() const;
 
 private:
 	// Position information

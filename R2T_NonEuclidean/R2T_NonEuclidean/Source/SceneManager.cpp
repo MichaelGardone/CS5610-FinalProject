@@ -4,69 +4,69 @@
 #define DEF_SCENE_NUM 6
 
 public:
-    SceneManager();
-    SceneManager(int);
+	SceneManager();
+	SceneManager(int);
 
-    void add_scene(Scene);
-    bool delete_scene(int);
+	void add_scene(Scene);
+	bool delete_scene(int);
 
-    void load(int);
-    void unload(int);
+	void load(int);
+	void unload(int);
 
 private:
-    std::vector<Scene> scenes;
+	std::vector<Scene> scenes;
 */
 
 SceneManager::SceneManager()
 {
-    this->scenes.resize(DEF_SCENE_NUM);
+	this->scenes.resize(DEF_SCENE_NUM);
 }
 
 SceneManager::SceneManager(int scenes)
 {
-    this->scenes.resize(scenes);
+	this->scenes.resize(scenes);
 }
 
 SceneManager::~SceneManager()
 {
-    for(int i = 0; i < this->scenes.size(); i++)
-    {
-        // Free memory
-        delete scenes[i];
-    }
+	for (int i = 0; i < this->scenes.size(); i++)
+	{
+		// Free memory
+		delete scenes[i];
+	}
 
-    // Empty vector
-    scenes.clear();
+	// Empty vector
+	scenes.clear();
 }
 
-void add_scene(Scene scene)
+void SceneManager::add_scene(Scene& scene)
 {
-    this->scenes.push_back(scene);
+	this->scenes.push_back(&scene);
 }
 
-bool delete_scene(int i)
+bool SceneManager::delete_scene(int i)
 {
-    if(i > this->scenes.size())
-        return false;
-    
-    delete scenes[i];
-    this->scenes.erase(this->scenes.begin()+i);
+	if (i > this->scenes.size())
+		return false;
 
-    return true;
+	delete scenes[i];
+	this->scenes.erase(this->scenes.begin() + i);
+
+	return true;
 }
 
-void load(int i)
+void SceneManager::load(int i)
 {
-    if (i > this->scenes.size())
-        return;
-    
-    this->scenes[i].load();
+	if (i > this->scenes.size())
+		return;
+
+	//this->scenes[i].load();
 }
 
-void unload(int i)
+void SceneManager::unload(int i)
 {
-    if (i > this->scenes.size())
-        return;
-    
-    this->scenes[i].unload();
+	if (i > this->scenes.size())
+		return;
+
+	//this->scenes[i].unload();
 }

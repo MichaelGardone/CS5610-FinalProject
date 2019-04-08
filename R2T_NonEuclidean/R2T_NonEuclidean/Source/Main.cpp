@@ -1,11 +1,7 @@
 #include <Windows.h>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
-#include "cyCore.h"
-#include "cyTriMesh.h"
-#include "cyMatrix.h"
-#include "cyGL.h"
 
 #include "Input.h"
 #include "SceneManager.h"
@@ -29,7 +25,7 @@ int main(int argc, char **argv)
 	GLFWwindow* window;
 
 	// Create a window and create its OpenGL context  
-	window = glfwCreateWindow(width, height, "Project 8", NULL, NULL);
+	window = glfwCreateWindow(width, height, "Non-Euclidean Rendering", NULL, NULL);
 
 	if (!window)
 	{
@@ -70,7 +66,6 @@ int main(int argc, char **argv)
 
 	SceneManager sm;
 	
-
 	//Main Loop
 	while (!glfwWindowShouldClose(window))
 	{

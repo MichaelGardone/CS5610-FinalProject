@@ -1,9 +1,11 @@
 #ifndef _MESH_H_
 #define _MESH_H_
 
-#include <GLFW/glfw3.h>
+#include <Windows.h>
 #include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <vector>
+#include <string>
 
 #include "System.h"
 #include "cyTriMesh.h"

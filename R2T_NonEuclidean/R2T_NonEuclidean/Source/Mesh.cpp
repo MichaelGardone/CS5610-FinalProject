@@ -22,7 +22,7 @@ Mesh::Mesh(const char* file)
 
 	this->vertices.resize(mesh.NF() * 3);
 
-	for (int i = 0; i < mesh.NF(); i++)
+	for (unsigned int i = 0; i < mesh.NF(); i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{

@@ -1,6 +1,7 @@
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
 
+#include <Windows.h>
 #include "cyPoint.h"
 #include "cyMatrix.h"
 
@@ -26,7 +27,8 @@ private:
 	cyMatrix4f projection;
 	cyMatrix4f world_view;
 
-	float near, far;
+	float z_near;
+	float z_far;
 	float width, height;
 	float ratio;
 

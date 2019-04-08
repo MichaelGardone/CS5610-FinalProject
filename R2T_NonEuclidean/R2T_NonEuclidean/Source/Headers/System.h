@@ -3,10 +3,10 @@
 
 #define M_PI 3.14159265359
 
-#ifdef NDEBUG
+/*#ifdef NDEBUG
 bool debug = false;
 #else
 bool debug = true;
-#endif
+#endif*/
 
 #endif

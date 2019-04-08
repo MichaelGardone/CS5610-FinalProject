@@ -42,8 +42,7 @@ Object::Object() :
 // TODO: Compile multiple shader types (i.e. vertex) to make one massive file
 void Object::LoadShaders(char** shaders, int length)
 {
-	if (debug)
-		std::cout << "Loading shaders for " << name << std::endl;
+	std::cout << "Loading shaders for " << name << std::endl;
 
 	for (int i = 0; i < length; i++)
 	{
@@ -77,8 +76,7 @@ void Object::LoadShaders(char** shaders, int length)
 	// Link the shaders together
 	shader.Link();
 
-	if (debug)
-		std::cout << "Shaders loaded for " << name << std::endl;
+	std::cout << "Shaders loaded for " << name << std::endl;
 }
 
 void Object::Reset()

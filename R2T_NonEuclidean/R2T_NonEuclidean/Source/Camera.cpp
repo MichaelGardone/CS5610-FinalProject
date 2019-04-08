@@ -23,20 +23,19 @@ private:
 	float width, height;
 */
 
-Camera::Camera(float width, float height, float near, float far, float fov)
+Camera::Camera(float width, float height, float z_near, float z_far, float fov)
 {
 	this->width = width;
 	this->height = height;
-	this->near = near;
-	this->far = far;
+	this->z_near = z_near;
+	this->z_far = z_far;
 
 	this->ratio = width / height;
 
 	world_view.MatrixIdentity();
 
 	projection.MatrixIdentity();
-	projection.SetPerspective(fov, this->ratio, near, far);
-	
+	projection.SetPerspective(fov, this->ratio, z_near, z_far);
 }
 
 cyMatrix4f Camera::get_inverse() const
