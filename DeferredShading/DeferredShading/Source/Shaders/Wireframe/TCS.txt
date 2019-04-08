@@ -1,0 +1,32 @@
+#version 410 core
+layout (vertices=3) out;
+
+uniform float subdivides;
+
+in vec2 uvCoord[];
+
+out tcs_res
+{
+	vec2 uvCoord;
+} contrl[];
+
+void main()
+{
+	// tessalate if we have to
+	if(gl_InvocationID == 0)
+	{
+		float subs = subdivides;
+
+		gl_TessLevelOuter[0] = subs;
+		gl_TessLevelOuter[1] = subs;
+		gl_TessLevelOuter[2] = subs;
+		gl_TessLevelOuter[3] = subs;
+
+		gl_TessLevelInner[0] = subs;
+		gl_TessLevelInner[1] = subs;
+	}
+
+	contrl[gl_InvocationID].uvCoord = uvCoord[gl_InvocationID];
+
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
+}

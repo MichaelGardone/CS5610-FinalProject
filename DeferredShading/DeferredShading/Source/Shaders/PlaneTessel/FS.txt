@@ -1,0 +1,54 @@
+#version 410 core
+
+layout (location=0) out vec4 color;
+
+in geo_res
+{
+	vec3 tangent;
+	vec3 bitangent;
+	vec3 normal;
+	vec2 uvCoord;
+} geometry;
+
+in lighting
+{
+	vec3 tanLightPos;
+	vec3 tanViewPos;
+	vec3 tanFragPos;
+} li;
+
+uniform sampler2D normalMap;
+
+uniform mat3 normalMat;
+
+// White
+vec3 modelColor = vec3(1.0, 1.0, 1.0);
+
+void main()
+{
+	// Normal map reading
+	mat3 toObjectSpace = mat3(normalize(geometry.tangent), normalize(geometry.bitangent), normalize(geometry.normal));
+
+	vec3 normal = texture(normalMap, geometry.uvCoord).rgb;
+	normal = normalize(normal * 2.0 - 1.0);
+	normal = normalMat * toObjectSpace * normal;
+
+	// LIGHTING
+	vec3 ambient = 0.1 * modelColor;
+	
+	vec3 lightDir = normalize(li.tanLightPos - li.tanFragPos);
+	
+	float diff = max(dot(lightDir, normal), 0.0);
+	vec3 diffuse = diff * modelColor;
+
+	vec3 viewDir = normalize(li.tanViewPos - li.tanFragPos);
+	vec3 reflectDir = reflect(-lightDir, normal);
+	vec3 halfwayDir = normalize(lightDir + viewDir);
+
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), 32.0);
+
+    vec3 specular = vec3(0.2) * spec;
+
+	// Done
+	color = vec4(ambient + diffuse + specular, 1.0);
+};

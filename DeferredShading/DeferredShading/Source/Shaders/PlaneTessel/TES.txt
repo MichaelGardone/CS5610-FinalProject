@@ -1,0 +1,76 @@
+#version 410 core
+layout (triangles, equal_spacing, ccw) in;
+
+uniform mat4 proj;
+uniform mat4 view;
+uniform mat4 model;
+
+uniform vec3 lightPos;
+uniform vec3 viewPos;
+
+uniform sampler2D displMap;
+
+in tcs_res
+{
+	vec3 tangent;
+	vec3 bitangent;
+	vec3 normal;
+	vec2 uvCoord;
+} contrl[];
+
+out tes_res
+{
+	vec3 tangent;
+	vec3 bitangent;
+	vec3 normal;
+	vec2 uvCoord;
+} eval;
+
+out lighting
+{
+	vec3 tanLightPos;
+	vec3 tanViewPos;
+	vec3 tanFragPos;
+} lightingInfo;
+
+vec2 vec2Interp(vec2 v1, vec2 v2, vec2 v3)
+{
+	return v1 * gl_TessCoord.x + v2 * gl_TessCoord.y + v3 * gl_TessCoord.z;
+}
+
+vec3 vec3Interp(vec3 v1, vec3 v2, vec3 v3)
+{
+	return v1 * gl_TessCoord.x + v2 * gl_TessCoord.y + v3 * gl_TessCoord.z;
+}
+
+vec4 vec4Interp(vec4 v1, vec4 v2, vec4 v3)
+{
+	return v1 * gl_TessCoord.x + v2 * gl_TessCoord.y + v3 * gl_TessCoord.z;
+}
+
+void main()
+{
+	eval.uvCoord = vec2Interp(contrl[0].uvCoord, contrl[1].uvCoord, contrl[2].uvCoord);
+	
+	eval.tangent = vec3Interp(contrl[0].tangent, contrl[1].tangent, contrl[2].tangent);
+	eval.bitangent = vec3Interp(contrl[0].bitangent, contrl[1].bitangent, contrl[2].bitangent);
+	eval.normal = normalize(vec3Interp(contrl[0].normal, contrl[1].normal, contrl[2].normal));
+
+	float offset = texture(displMap, eval.uvCoord).a;
+	vec4 displacement = vec4(eval.normal * (offset * 0.5f), 0.0);
+	
+	gl_Position = proj * view * model * (vec4Interp(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position));
+	
+	// Lighting
+	vec3 T = normalize(vec3(model * vec4(vec3Interp(contrl[0].tangent, contrl[1].tangent, contrl[2].tangent), 0.0)));
+	vec3 B = normalize(vec3(model * vec4(vec3Interp(contrl[0].bitangent, contrl[1].bitangent, contrl[2].bitangent), 0.0)));
+	vec3 N = normalize(vec3(model * vec4(vec3Interp(contrl[0].normal, contrl[1].normal, contrl[2].normal), 0.0)));
+
+	mat3 TBN = transpose(mat3(T, B, N));
+	// Light tangents
+	lightingInfo.tanLightPos = TBN * lightPos;
+	// View tangents
+	lightingInfo.tanViewPos = TBN * viewPos;
+	// Light tangents
+	lightingInfo.tanFragPos = TBN * vec3(model * vec4Interp(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position));
+}
