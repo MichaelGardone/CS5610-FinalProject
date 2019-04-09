@@ -1,0 +1,10 @@
+﻿  Main.cpp
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\camera.hpp(62): warning C4244: 'argument': conversion from 'int' to 'const TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(20): warning C4091: 'typedef ': ignored on left of 'vertex_info' when no variable is declared
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(140): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(190): error C2059: syntax error: 'string'

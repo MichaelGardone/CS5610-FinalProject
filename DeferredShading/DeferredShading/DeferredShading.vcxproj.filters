@@ -33,10 +33,25 @@
     <ClInclude Include="Source\Headers\Light.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Headers\GMath.h">
+    <ClInclude Include="Source\Headers\lodepng.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Headers\lodepng.h">
+    <ClInclude Include="Source\Headers\GBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\System.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scenes\Scene1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scenes\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scenes\SceneManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\Model.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,19 +62,22 @@
     <ClCompile Include="Source\lodepng.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Source\Shaders\Plane Shaders\PlaneFS.txt" />
-    <Text Include="Source\Shaders\Plane Shaders\PlaneVS.txt" />
     <Text Include="Source\Shaders\Skybox Shaders\SkyboxVS.txt" />
     <Text Include="Source\Shaders\Skybox Shaders\SkyboxFS.txt" />
     <Text Include="Source\Shaders\Primitive Shaders\BasicVS.txt" />
     <Text Include="Source\Shaders\Primitive Shaders\BasicFS.txt" />
-    <Text Include="Source\Shaders\Wireframe\FragmentShader.txt" />
-    <Text Include="Source\Shaders\Wireframe\GeometryShader.txt" />
-    <Text Include="Source\Shaders\Wireframe\VertexShader.txt" />
-    <Text Include="Source\Shaders\PlaneTessel\TCS.txt" />
-    <Text Include="Source\Shaders\PlaneTessel\GS.txt" />
-    <Text Include="Source\Shaders\Wireframe\TCS.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Shaders\GeometryPass\gbuffer_vertex.vert" />
+    <None Include="Source\Shaders\GeometryPass\gbuffer_fragment.frag" />
+    <None Include="Source\Shaders\PhongBlinnPass\lightingpass_vertex.vert" />
+    <None Include="Source\Shaders\PhongBlinnPass\lightingpass_fragment.frag" />
+    <None Include="Source\Shaders\LightShader\lightbox_fragment.frag" />
+    <None Include="Source\Shaders\LightShader\lightbox_vert.vert" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 
 #include "cyMatrix.h"
 #include "cyPoint.h"
-#include "GMath.h"
+#include "System.h"
 
 class Light {
 
@@ -25,7 +25,7 @@ public:
 		
 		// For shadow maps
 		this->view_matrix.SetView(this->position, this->position + this->front, this->up);
-		this->light_proj.SetPerspective(TO_RADIANS(60.f), 1.f, .1f, 100.f);
+		this->light_proj.SetPerspective(rads(60.f), 1.f, .1f, 100.f);
 		this->light_proj.OrthogonalizeX();
 		this->light_proj.OrthogonalizeY();
 		this->light_proj.OrthogonalizeZ();
@@ -41,7 +41,7 @@ public:
 
 		// For shadow maps
 		this->view_matrix.SetView(this->position, this->position + this->front, this->up);
-		this->light_proj.SetPerspective(TO_RADIANS(60.f), 1.f, .1f, 100.f);
+		this->light_proj.SetPerspective(rads(60.f), 1.f, .1f, 100.f);
 		this->light_proj.OrthogonalizeX();
 		this->light_proj.OrthogonalizeY();
 		this->light_proj.OrthogonalizeZ();
@@ -50,8 +50,8 @@ public:
 
 	void rotate(int dx, int dy)
 	{
-		view_matrix *= cyMatrix4f::MatrixRotationY(-dy * ROTATION_ANGLE * MOVE_SPEED);
-		view_matrix *= cyMatrix4f::MatrixRotationX(-dx * ROTATION_ANGLE * MOVE_SPEED);
+		view_matrix *= cyMatrix4f::MatrixRotationY(-dy * 10.f * 0.1f);
+		view_matrix *= cyMatrix4f::MatrixRotationX(-dx * 10.f * 0.1f);
 	}
 
 	cyMatrix4f get_light_proj()

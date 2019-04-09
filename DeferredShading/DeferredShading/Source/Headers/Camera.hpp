@@ -3,7 +3,7 @@
 
 #include "cyMatrix.h"
 #include "cyPoint.h"
-#include "GMath.h"
+#include "System.h"
 
 class Camera {
 private:
@@ -28,7 +28,7 @@ public:
 		view_matrix.SetIdentity();
 		view_matrix.SetView(this->pos, cyPoint3f(0.f), this->up);
 
-		proj_matrix.SetPerspective(TO_RADIANS(this->fov), 1.f, this->nearPlane, this->farPlane);
+		proj_matrix.SetPerspective(rads(this->fov), 1.f, this->nearPlane, this->farPlane);
 	}
 
 	cyPoint3f get_position()
@@ -53,13 +53,13 @@ public:
 
 	void rotate(int dx, int dy)
 	{
-		view_matrix *= cyMatrix4f::MatrixRotationY(-dy * ROTATION_ANGLE);
-		view_matrix *= cyMatrix4f::MatrixRotationZ(-dx * ROTATION_ANGLE);
+		view_matrix *= cyMatrix4f::MatrixRotationY(-dy * 10.f);
+		view_matrix *= cyMatrix4f::MatrixRotationZ(-dx * 10.f);
 	}
 
 	void translate(int dx, int dy)
 	{
-		view_matrix.AddTrans(this->pos * dy * MOVE_SPEED);
+		view_matrix.AddTrans(this->pos * dy * 0.1f);
 	}
 
 };
