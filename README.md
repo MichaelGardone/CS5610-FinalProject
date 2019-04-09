@@ -14,6 +14,7 @@ Graphics API: OpenGL
 Machine 1:
 
 Machine 2:
+
 Processor: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz, 2208 Mhz, 6 Core(s), 12 Logical Processor(s)
 
 GPU: NVIDIA GeForce RTX 2080 with Max Q-Design
