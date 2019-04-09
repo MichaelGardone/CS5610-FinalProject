@@ -5,6 +5,10 @@ c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshadi
               TYPE=float
           ]
 c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(20): warning C4091: 'typedef ': ignored on left of 'vertex_info' when no variable is declared
-c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(50): warning C4018: '<': signed/unsigned mismatch
-c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(140): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(190): error C2059: syntax error: 'string'
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\headers\model.hpp(170): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(69): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(71): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(205): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610-finalproject\deferredshading\deferredshading\source\scenes\scene1.hpp(206): warning C4305: 'initializing': truncation from 'double' to 'float'
+  DeferredShading.vcxproj -> C:\Users\mikeg\Desktop\Projects\School\CS 5610\CS5610-FinalProject\DeferredShading\x64\Debug\DeferredShading.exe

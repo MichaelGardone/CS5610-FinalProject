@@ -120,6 +120,10 @@ void GBuffer::add_buffer(const char* name)
 		break;
 	}
 
+	char *s = new char[strlen(name)+1];
+	strcpy(s, name);
+	this->buffer_names[gbuffer_curr] = s;
+
 	gbuffer_curr++;
 }
 
@@ -175,4 +179,17 @@ int GBuffer::get_attach_size() const
 unsigned int GBuffer::get_gbuffer() const
 {
 	return this->gbuffer;
+}
+
+unsigned int GBuffer::get_buffer(const char* buffer) const
+{
+	for (int i = 0; i < this->gbuffer_size; i++)
+	{
+		if (strcmp((const char*)buffer_names.at(i), buffer))
+		{
+			return this->buffers[i];
+		}
+	}
+	std::cout << "ERROR: Unable to find buffer type" << std::endl;
+	return -1;
 }

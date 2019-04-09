@@ -29,14 +29,15 @@ public:
 	int get_attach_size() const;
 
 	unsigned int get_gbuffer() const;
-	
+
+	unsigned int get_buffer(const char *) const;
 
 private:
 	unsigned int gbuffer;
 	unsigned int renderbuffer;
 	
 	unsigned int* buffers;
-	std::vector<unsigned char*> buffer_names;
+	std::vector<char*> buffer_names;
 
 	unsigned int* attachments;
 

@@ -6,8 +6,8 @@
 class Scene
 {
 public:
-	virtual void Draw(){}
-	virtual void Load(){}
+	void Draw();
+	void Load();
 };
 
 #endif

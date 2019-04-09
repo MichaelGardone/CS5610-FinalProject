@@ -85,7 +85,7 @@ int main(int argc, char **argv)
 		//Clear color buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		sm.Draw();
+		s1.Draw();
 
 		// Window events and swapping buffers
 		glfwSwapBuffers(window);

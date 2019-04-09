@@ -22,18 +22,13 @@ typedef struct vertex_info {
 class Model
 {
 public:
-	
-	Model(const char *name, const char *file)
-	{
-		this->name = new char[strlen(name)];
-		this->name = name;
 
-		LoadModel(file);
-	}
-	
-	~Model()
+	Model()
 	{
-		delete[] name;
+		// Initialize scales
+		model_matrix.SetIdentity();
+		// Set scale
+		model_matrix.SetScale(0.25f);
 	}
 	
 	void LoadModel(const char* file)
@@ -45,9 +40,9 @@ public:
 		}
 
 		mesh.ComputeNormals();
-		info.resize(mesh.NF());
+		info.resize(mesh.NF() * 3);
 
-		for (int i = 0; i < mesh.NF(); i++)
+		for (unsigned int i = 0; i < mesh.NF(); i++)
 		{
 			for (int j = 0; j < 3; j++)
 			{
@@ -134,11 +129,51 @@ public:
 		}
 	}
 
+	void LoadQuad()
+	{
+		float quad[] = {
+			// positions        // texture Coords
+			-1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+			-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+			 1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+			 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		};
+		info.resize(20);
+		for (int i = 0; i < 20; i+=5)
+		{
+			info[i].position = cyPoint3f(quad[i], quad[i+1], quad[i+2]);
+			info[i].texCoords = cyPoint2f(quad[i + 3], quad[i + 4]);
+		}
+
+		// Setup memory
+		glGenVertexArrays(1, &vao);
+		glBindVertexArray(vao);
+
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_info) * info.size(), &info[0], GL_STATIC_DRAW);
+
+		// Positions
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex_info), (void*)0);
+		
+		// Textures
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex_info), (void*)(offsetof(vertex_info, texCoords)));
+		
+
+	}
+
 	void Draw()
 	{
 		glBindVertexArray(vao);
-		glDrawArrays(GL_TRIANGLES, 0, info.size());
+		glDrawArrays(GL_TRIANGLES, (GLint)0, info.size());
 		glBindVertexArray(0);
+	}
+
+	cyMatrix4f get_model_matrix()
+	{
+		return this->model_matrix;
 	}
 
 private:
@@ -150,7 +185,7 @@ private:
 	GLuint texture;
 	GLuint vao, vbo;
 
-	const char *name;
+	cyMatrix4f model_matrix;
 
 };
 
