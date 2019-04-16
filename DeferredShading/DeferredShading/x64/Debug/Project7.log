@@ -1,0 +1,26 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Project2.vcxproj, Project3.vcxproj, Project4.vcxproj, Project5.vcxproj, Project6.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Main.cpp
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\headers\camera.hpp(56): warning C4244: 'argument': conversion from 'double' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\headers\camera.hpp(57): warning C4244: 'argument': conversion from 'double' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\headers\camera.hpp(62): warning C4244: 'argument': conversion from 'int' to 'const TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(25): warning C4091: 'typedef ': ignored on left of 'VertexInfo' when no variable is declared
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(91): warning C4018: '<': signed/unsigned mismatch
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(415): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(422): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(476): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(483): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(506): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\mikeg\desktop\projects\school\cs 5610\cs5610\project7\project7\source\main.cpp(511): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Project7.vcxproj -> C:\Users\mikeg\Desktop\Projects\School\CS 5610\CS5610\Project7\x64\Debug\Project7.exe

@@ -90,7 +90,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include;Source\cyCodeBase;Source\Headers;Source\Scenes;Source\objects;Source\Shaders</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include;Source\cyCodeBase;Source\Headers</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -135,7 +135,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\GBuffer.cpp" />
     <ClCompile Include="Source\lodepng.cpp" />
     <ClCompile Include="Source\Main.cpp" />
   </ItemGroup>
@@ -145,28 +144,21 @@
     <ClInclude Include="Source\cyCodeBase\cyMatrix.h" />
     <ClInclude Include="Source\cyCodeBase\cyPoint.h" />
     <ClInclude Include="Source\cyCodeBase\cyTriMesh.h" />
-    <ClInclude Include="Source\Headers\GBuffer.h" />
+    <ClInclude Include="Source\Headers\GBuffer.hpp" />
     <ClInclude Include="Source\Headers\lodepng.h" />
+    <ClInclude Include="Source\Headers\GMath.h" />
     <ClInclude Include="Source\Headers\Light.hpp" />
-    <ClInclude Include="Source\Headers\Model.hpp" />
     <ClInclude Include="Source\Headers\System.h" />
-    <ClInclude Include="Source\Scenes\Scene.h" />
-    <ClInclude Include="Source\Scenes\Scene1.hpp" />
-    <ClInclude Include="Source\Scenes\SceneManager.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Source\Shaders\Primitive Shaders\BasicFS.txt" />
-    <Text Include="Source\Shaders\Primitive Shaders\BasicVS.txt" />
-    <Text Include="Source\Shaders\Skybox Shaders\SkyboxFS.txt" />
-    <Text Include="Source\Shaders\Skybox Shaders\SkyboxVS.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Source\Shaders\GeometryPass\gbuffer_fragment.frag" />
-    <None Include="Source\Shaders\GeometryPass\gbuffer_vertex.vert" />
-    <None Include="Source\Shaders\LightShader\lightbox_fragment.frag" />
-    <None Include="Source\Shaders\LightShader\lightbox_vert.vert" />
-    <None Include="Source\Shaders\PhongBlinnPass\lightingpass_fragment.frag" />
-    <None Include="Source\Shaders\PhongBlinnPass\lightingpass_vertex.vert" />
+    <None Include="Source\Shaders\Debug\debug.frag" />
+    <None Include="Source\Shaders\Debug\debug.vert" />
+    <None Include="Source\Shaders\DeferredShading\Buffer\buffer.frag" />
+    <None Include="Source\Shaders\DeferredShading\Buffer\buffer.vert" />
+    <None Include="Source\Shaders\DeferredShading\BlinnPhong\deferred_shader.frag" />
+    <None Include="Source\Shaders\DeferredShading\BlinnPhong\deferred_shader.vert" />
+    <None Include="Source\Shaders\DeferredShading\Lights\light.frag" />
+    <None Include="Source\Shaders\DeferredShading\Lights\light.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
