@@ -48,6 +48,7 @@ public:
 
 		forwardRender->setVec3("lightPos", glm::vec3(0.f, 1.f, 0.f));
 		forwardRender->setVec3("lightColor", glm::vec3(1.f, 1.f, 1.f));
+		forwardRender->setVec3("viewPos", camera->position);
 
 		teapot->Draw(*forwardRender);
 	}

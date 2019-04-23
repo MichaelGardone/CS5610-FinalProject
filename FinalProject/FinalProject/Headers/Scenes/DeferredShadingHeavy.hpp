@@ -83,13 +83,13 @@ public:
 		{
 			lightPass->setVec3("lights[" + std::to_string(i) + "].Position", lightPositions[i]);
 			lightPass->setVec3("lights[" + std::to_string(i) + "].Color", lightColors[i]);
-			// update attenuation parameters and calculate radius
-			const float constant = 1.0; // note that we don't send this to the shader, we assume it is always 1.0 (in our case)
+
+			const float constant = 1.0;
 			const float linear = 0.7;
 			const float quadratic = 1.8;
 			lightPass->setFloat("lights[" + std::to_string(i) + "].Linear", linear);
 			lightPass->setFloat("lights[" + std::to_string(i) + "].Quadratic", quadratic);
-			// then calculate radius of light volume/sphere
+
 			const float maxBrightness = std::fmaxf(std::fmaxf(lightColors[i].r, lightColors[i].g), lightColors[i].b);
 			float radius = (-linear + std::sqrt(linear * linear - 4 * quadratic * (constant - (256.0f / 5.0f) * maxBrightness))) / (2.0f * quadratic);
 			lightPass->setFloat("lights[" + std::to_string(i) + "].Radius", radius);
@@ -150,7 +150,7 @@ private:
 	float lastY = (float)HEIGHT / 2.0;
 	bool firstMouse = true;
 
-	int numOfTeapots = 1000;
+	int numOfTeapots = 500;
 
 	float deltaTime, lastFrame;
 

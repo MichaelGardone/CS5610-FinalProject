@@ -4,10 +4,11 @@
 #include <System.h>
 
 #include <Scenes/ForwardRenderingScene.hpp>
-#include <Scenes/Debug.hpp>
 #include <Scenes/DeferredShading.hpp>
-#include <Scenes/ForwardRenderHeavy.h>
+#include <Scenes/Debug.hpp>
+#include <Scenes/ForwardRenderHeavy.hpp>
 #include <Scenes/DeferredShadingHeavy.hpp>
+#include <Scenes/DeferredPostProcessing.hpp>
 
 #include <iostream>
 
@@ -23,6 +24,7 @@ Debug* debug;
 DeferredShader* ds;
 ForwardRenderHeavy* frh;
 DeferredHeavy* dh;
+DeferredPost* dp;
 
 unsigned char currScene = 1;
 
@@ -59,6 +61,7 @@ int main(int argc, char **argv)
 	debug = new Debug();
 	frh = new ForwardRenderHeavy();
 	dh = new DeferredHeavy();
+	dp = new DeferredPost();
 
 	std::cout << "Loaded forward shading scene" << std::endl;
 	
@@ -139,11 +142,6 @@ void processInput(GLFWwindow *window)
 	{
 		currScene = 6; // Deferred Shading w/ Post Processing
 		std::cout << "Loaded deferred shading scene with post processing" << std::endl;
-	}
-	else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS && currScene != 0)
-	{
-		currScene = 0; // VR Deferred Shading
-		std::cout << "Loaded VR deferred shading scene ### HTC VIVE TESTED ONLY ###" << std::endl;
 	}
 
 	if (currScene == 1)

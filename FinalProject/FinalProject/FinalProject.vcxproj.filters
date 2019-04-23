@@ -53,13 +53,13 @@
     <ClInclude Include="Headers\Scenes\DeferredShading.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Scenes\ForwardRenderHeavy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Scenes\DeferredShadingHeavy.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Scenes\DeferredPostProcessing.h">
+    <ClInclude Include="Headers\Scenes\DeferredPostProcessing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Scenes\ForwardRenderHeavy.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

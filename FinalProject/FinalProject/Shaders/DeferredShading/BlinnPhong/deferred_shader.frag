@@ -20,7 +20,7 @@ uniform Light lights[NR_LIGHTS];
 uniform vec3 viewPos;
 
 void main()
-{             
+{
     // retrieve data from gbuffer
     vec3 FragPos = texture(gPosition, TexCoords).rgb;
     vec3 Normal = texture(gNormal, TexCoords).rgb;
@@ -49,6 +49,6 @@ void main()
             specular *= attenuation;
             lighting += diffuse + specular;
         }
-    }    
+    }
     FragColor = vec4(lighting, 1.0);
 }
