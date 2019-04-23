@@ -6,6 +6,8 @@
 #include <Scenes/ForwardRenderingScene.hpp>
 #include <Scenes/Debug.hpp>
 #include <Scenes/DeferredShading.hpp>
+#include <Scenes/ForwardRenderHeavy.h>
+#include <Scenes/DeferredShadingHeavy.hpp>
 
 #include <iostream>
 
@@ -19,6 +21,8 @@ void processInput(GLFWwindow *window);
 ForwardRender* fr;
 Debug* debug;
 DeferredShader* ds;
+ForwardRenderHeavy* frh;
+DeferredHeavy* dh;
 
 unsigned char currScene = 1;
 
@@ -50,9 +54,11 @@ int main(int argc, char **argv)
 
 	// == END SETUP ==
 
-	debug = new Debug();
 	fr = new ForwardRender();
 	ds = new DeferredShader();
+	debug = new Debug();
+	frh = new ForwardRenderHeavy();
+	dh = new DeferredHeavy();
 
 	std::cout << "Loaded forward shading scene" << std::endl;
 	
@@ -67,12 +73,16 @@ int main(int argc, char **argv)
 		//Clear color buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		if(currScene == 1)
+		if (currScene == 1)
 			fr->Draw();
 		else if (currScene == 2)
 			ds->Draw();
-		else if(currScene == 3)
+		else if (currScene == 3)
 			debug->Draw();
+		else if (currScene == 4)
+			frh->Draw();
+		else if (currScene == 5)
+			dh->Draw();
 
 		// Window events and swapping buffers
 		glfwSwapBuffers(window);
@@ -83,6 +93,7 @@ int main(int argc, char **argv)
 	delete fr;
 	delete ds;
 	delete debug;
+	delete dh;
 
 	//Close OpenGL window and terminate GLFW  
 	glfwDestroyWindow(window);
@@ -139,8 +150,12 @@ void processInput(GLFWwindow *window)
 		fr->processInput(window);
 	else if (currScene == 2)
 		ds->processInput(window);
-	if(currScene == 3)
+	else if (currScene == 3)
 		debug->processInput(window);
+	else if (currScene == 4)
+		frh->processInput(window);
+	else if (currScene == 5)
+		dh->processInput(window);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -150,10 +165,28 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-
+	if (currScene == 1)
+		fr->mouse_callback(window, xpos, ypos);
+	else if (currScene == 2)
+		ds->mouse_callback(window, xpos, ypos);
+	else if (currScene == 3)
+		debug->mouse_callback(window, xpos, ypos);
+	else if (currScene == 4)
+		frh->mouse_callback(window, xpos, ypos);
+	else if (currScene == 5)
+		dh->mouse_callback(window, xpos, ypos);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-
+	if (currScene == 1)
+		fr->scroll_callback(window, xoffset, yoffset);
+	else if (currScene == 2)
+		ds->scroll_callback(window, xoffset, yoffset);
+	else if (currScene == 3)
+		debug->scroll_callback(window, xoffset, yoffset);
+	else if (currScene == 4)
+		frh->scroll_callback(window, xoffset, yoffset);
+	else if (currScene == 5)
+		dh->scroll_callback(window, xoffset, yoffset);
 }

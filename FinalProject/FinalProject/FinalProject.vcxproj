@@ -129,7 +129,9 @@
     <ClInclude Include="Headers\Camera.hpp" />
     <ClInclude Include="Headers\GBuffer.hpp" />
     <ClInclude Include="Headers\Scenes\Debug.hpp" />
+    <ClInclude Include="Headers\Scenes\DeferredPostProcessing.h" />
     <ClInclude Include="Headers\Scenes\DeferredShading.hpp" />
+    <ClInclude Include="Headers\Scenes\DeferredShadingHeavy.hpp" />
     <ClInclude Include="Headers\Scenes\ForwardRenderHeavy.h" />
     <ClInclude Include="Headers\Scenes\ForwardRenderingScene.hpp" />
     <ClInclude Include="Headers\Mesh.hpp" />

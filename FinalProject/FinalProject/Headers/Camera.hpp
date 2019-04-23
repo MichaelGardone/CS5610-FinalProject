@@ -62,6 +62,19 @@ public:
 		return glm::lookAt(position, position + front, up);
 	}
 
+	void processKeyboardInput(Camera_Movement direction, float deltaTime)
+	{
+		float velocity = moveSpeed * deltaTime;
+		if (direction == FORWARD)
+			position += front * velocity;
+		if (direction == BACKWARD)
+			position -= front * velocity;
+		if (direction == LEFT)
+			position -= right * velocity;
+		if (direction == RIGHT)
+			position += right * velocity;
+	}
+
 	void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
 	{
 		xoffset *= mouseSensitivity;
@@ -96,9 +109,9 @@ private:
 	{
 		glm::vec3 _front;
 		_front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-		_front.y = cos(glm::radians(pitch));
+		_front.y = sin(glm::radians(pitch));
 		_front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-		front = normalize(_front);
+		front = glm::normalize(_front);
 
 		right = glm::normalize(glm::cross(front, worldUp));
 		up = glm::normalize(glm::cross(right, front));
