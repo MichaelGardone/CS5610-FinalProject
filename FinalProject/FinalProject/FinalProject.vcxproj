@@ -129,7 +129,7 @@
     <ClInclude Include="Headers\Camera.hpp" />
     <ClInclude Include="Headers\GBuffer.hpp" />
     <ClInclude Include="Headers\Scenes\Debug.hpp" />
-    <ClInclude Include="Headers\Scenes\DeferredPostProcessing.hpp" />
+    <ClInclude Include="Headers\Scenes\DeferredLight.hpp" />
     <ClInclude Include="Headers\Scenes\DeferredShading.hpp" />
     <ClInclude Include="Headers\Scenes\DeferredShadingHeavy.hpp" />
     <ClInclude Include="Headers\Scenes\ForwardRenderHeavy.hpp" />
@@ -138,10 +138,15 @@
     <ClInclude Include="Headers\Model.hpp" />
     <ClInclude Include="Headers\Shader.hpp" />
     <ClInclude Include="Headers\stbi.h" />
+    <ClInclude Include="Headers\Stencil.hpp" />
     <ClInclude Include="Headers\System.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Shaders\PostProcessing\StencilBuffer\Stencil.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\PostProcessing\StencilBuffer\Stencil.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

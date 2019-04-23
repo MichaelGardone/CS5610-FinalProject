@@ -8,7 +8,7 @@
 #include <Scenes/Debug.hpp>
 #include <Scenes/ForwardRenderHeavy.hpp>
 #include <Scenes/DeferredShadingHeavy.hpp>
-#include <Scenes/DeferredPostProcessing.hpp>
+#include <Scenes/DeferredLight.hpp>
 
 #include <iostream>
 
@@ -24,7 +24,7 @@ Debug* debug;
 DeferredShader* ds;
 ForwardRenderHeavy* frh;
 DeferredHeavy* dh;
-DeferredPost* dp;
+DeferredLight* dp;
 
 unsigned char currScene = 1;
 
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 	debug = new Debug();
 	frh = new ForwardRenderHeavy();
 	dh = new DeferredHeavy();
-	dp = new DeferredPost();
+	dp = new DeferredLight();
 
 	std::cout << "Loaded forward shading scene" << std::endl;
 	
@@ -86,6 +86,8 @@ int main(int argc, char **argv)
 			frh->Draw();
 		else if (currScene == 5)
 			dh->Draw();
+		else if (currScene == 6)
+			dp->Draw();
 
 		// Window events and swapping buffers
 		glfwSwapBuffers(window);
@@ -97,6 +99,7 @@ int main(int argc, char **argv)
 	delete ds;
 	delete debug;
 	delete dh;
+	delete dp;
 
 	//Close OpenGL window and terminate GLFW  
 	glfwDestroyWindow(window);
@@ -116,31 +119,37 @@ void processInput(GLFWwindow *window)
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && currScene != 1)
 	{
 		currScene = 1; // Forward shading scene
+		dp->StencilOff();
 		std::cout << "Loaded forward shading scene" << std::endl;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && currScene != 2)
 	{
 		currScene = 2; // Deferred Shading scene
+		dp->StencilOff();
 		std::cout << "Loaded deferred shading scene" << std::endl;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && currScene != 3)
 	{
 		currScene = 3; // Debug shading scene
+		dp->StencilOff();
 		std::cout << "Loaded debug deferred shading scene" << std::endl;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && currScene != 4)
 	{
 		currScene = 4; // Forward shading w/ lots of teapots
+		dp->StencilOff();
 		std::cout << "Loaded forward shading scene with lots of teapots" << std::endl;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS && currScene != 5)
 	{
 		currScene = 5; // Deferred Shading w/ lots of teapots and text
+		dp->StencilOff();
 		std::cout << "Loaded deferred shading scene with lots of teapots" << std::endl;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS && currScene != 6)
 	{
 		currScene = 6; // Deferred Shading w/ Post Processing
+		dp->StencilOn();
 		std::cout << "Loaded deferred shading scene with post processing" << std::endl;
 	}
 
@@ -154,6 +163,8 @@ void processInput(GLFWwindow *window)
 		frh->processInput(window);
 	else if (currScene == 5)
 		dh->processInput(window);
+	else if (currScene == 6)
+		dp->processInput(window);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -173,6 +184,8 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 		frh->mouse_callback(window, xpos, ypos);
 	else if (currScene == 5)
 		dh->mouse_callback(window, xpos, ypos);
+	else if (currScene == 6)
+		dp->mouse_callback(window, xpos, ypos);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
@@ -187,4 +200,6 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 		frh->scroll_callback(window, xoffset, yoffset);
 	else if (currScene == 5)
 		dh->scroll_callback(window, xoffset, yoffset);
+	else if (currScene == 6)
+		dp->scroll_callback(window, xoffset, yoffset);
 }

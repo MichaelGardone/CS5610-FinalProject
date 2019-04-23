@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include <System.h>
+#include <Stencil.hpp>
 
 class GBuffer
 {

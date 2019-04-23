@@ -56,14 +56,21 @@
     <ClInclude Include="Headers\Scenes\DeferredShadingHeavy.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Scenes\DeferredPostProcessing.hpp">
+    <ClInclude Include="Headers\Scenes\ForwardRenderHeavy.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Scenes\ForwardRenderHeavy.hpp">
+    <ClInclude Include="Headers\Stencil.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Scenes\DeferredLight.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Shaders\PostProcessing\StencilBuffer\Stencil.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\PostProcessing\StencilBuffer\Stencil.vert" />
   </ItemGroup>
 </Project>

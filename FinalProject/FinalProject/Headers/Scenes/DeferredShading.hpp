@@ -44,8 +44,9 @@ public:
 		glm::mat4 proj = glm::perspective(glm::radians(camera->zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.f);
 		glm::mat4 view = camera->getViewMatrix();
 		glm::mat4 model = glm::mat4(1.f);
-		model = glm::translate(model, glm::vec3(0.0, 5.0, 0.0));
-		model = glm::scale(model, glm::vec3(0.05f));
+		model = glm::translate(model, glm::vec3(0.0, -1.f, 0.0));
+		model = glm::rotate(model, glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f));
+		model = glm::scale(model, glm::vec3(0.1f));
 
 		geomPass->use();
 		geomPass->setMat4("projection", proj);
