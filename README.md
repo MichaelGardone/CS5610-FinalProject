@@ -11,9 +11,11 @@ Language: C++
 
 Graphics API: OpenGL
 
-Machine 1:
+Wrapper: GLAD
 
-Machine 2:
+Additions: Asset Importer
+
+## Machine:
 
 Processor: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz, 2208 Mhz, 6 Core(s), 12 Logical Processor(s)
 
