@@ -11,7 +11,9 @@ Language: C++
 
 Graphics API: OpenGL
 
-Machine 1:
+Wrapper: GLAD
+
+Additions: Asset Importer
 
 Machine 2:
 
