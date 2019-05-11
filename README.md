@@ -1,10 +1,8 @@
 # CS5610-FinalProject
-Final project for CS5610 using OpenGL. I selected to do a deferred shading pipeline with different lighting models. This project also has VR enabled.
+Final project for CS5610 using OpenGL. I selected to do a deferred shading pipeline with different lighting models.
 
 ## Project Description
 The final project for Spring 2019 CS 5610 Interactive Computer Graphics is a 4 week long project to implement something related to the class. It can be anything like rendering water, global illumination, or raytracing if the invididual's graphics card supports it.
-
-This project will be brought to [Project Aether](https://github.com/MichaelGardone/ProjectAether).
 
 ## Implementation Specifics
 Language: C++
